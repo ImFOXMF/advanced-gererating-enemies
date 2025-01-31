@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
 
     private ObjectPool<Enemy> _pool;
     private WaitForSeconds _spawnWait;
+    private SpawnPoint _currentSpawnPoint;
 
     private void Awake()
     {
@@ -29,9 +30,9 @@ public class Spawner : MonoBehaviour
 
     private void GetAction(Enemy enemy)
     {
-        enemy.Move(ChooseSpawner());
+        enemy.Move(_currentSpawnPoint.Aim);
         enemy.gameObject.SetActive(true);
-
+        
         StartCoroutine(ReturnToPoolAfterDelay(enemy));
     }
 
@@ -40,7 +41,9 @@ public class Spawner : MonoBehaviour
         _pool = new ObjectPool<Enemy>(
             createFunc: () =>
             {
-                var enemy = Instantiate(_enemyPrefab);
+                _currentSpawnPoint = ChooseSpawner();
+                var enemy = Instantiate(_currentSpawnPoint.Enemy);
+                enemy.GetStartPoint(_currentSpawnPoint.transform.position);
                 return enemy;
             },
             actionOnGet: (enemy) => GetAction(enemy),
@@ -68,7 +71,7 @@ public class Spawner : MonoBehaviour
             yield return _spawnWait;
         }
     }
-
+    
     private IEnumerator ReturnToPoolAfterDelay(Enemy enemy)
     {
         yield return enemy.WaitForLifeTime;

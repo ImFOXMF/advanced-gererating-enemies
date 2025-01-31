@@ -3,16 +3,20 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
-    
-    private Vector3 _direction;
+    private Aim _aim;
+
+    private Vector3 _targetPosition;
+    private bool _isMoving = false;
 
     private void Update()
     {
-        transform.Translate(_direction * (_speed * Time.deltaTime));
+        if (_isMoving)
+            transform.position = Vector3.MoveTowards(transform.position, _aim.transform.position, _speed * Time.deltaTime);
     }
 
-    public void Initialize(Vector3 direction)
+    public void Initialize(Aim aim)
     {
-        _direction = direction;
+        _aim = aim;
+        _isMoving = true;
     }
 }
