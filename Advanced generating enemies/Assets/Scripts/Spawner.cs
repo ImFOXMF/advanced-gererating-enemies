@@ -6,7 +6,6 @@ using Random = System.Random;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _enemyPrefab;
     [SerializeField] private float _spawnInterval = 2f;
     [SerializeField] private int _poolCapacity = 5;
     [SerializeField] private int _poolMaxSize = 5;
@@ -28,14 +27,6 @@ public class Spawner : MonoBehaviour
         StartCoroutine(SpawnRoutine());
     }
 
-    private void GetAction(Enemy enemy)
-    {
-        enemy.Move(_currentSpawnPoint.Aim);
-        enemy.gameObject.SetActive(true);
-        
-        StartCoroutine(ReturnToPoolAfterDelay(enemy));
-    }
-
     private void CreatePool()
     {
         _pool = new ObjectPool<Enemy>(
@@ -52,6 +43,14 @@ public class Spawner : MonoBehaviour
             collectionCheck: true,
             defaultCapacity: _poolCapacity,
             maxSize: _poolMaxSize);
+    }
+    
+    private void GetAction(Enemy enemy)
+    {
+        enemy.Move(_currentSpawnPoint.Aim);
+        enemy.gameObject.SetActive(true);
+        
+        StartCoroutine(ReturnToPoolAfterDelay(enemy));
     }
 
     private SpawnPoint ChooseSpawner()

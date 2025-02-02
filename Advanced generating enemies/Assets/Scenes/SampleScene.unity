@@ -379,7 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6727f0979c43e5d4a8dec54272b16a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 2, y: 6, z: 12}
   _enemy: {fileID: 2515188704997428163, guid: 40ed7afd204916145b66285603bd577b, type: 3}
   _aim: {fileID: 399863394}
 --- !u!1 &830102086
@@ -457,7 +456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6727f0979c43e5d4a8dec54272b16a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: -5, y: 6, z: 8}
   _enemy: {fileID: 2515188704997428163, guid: d02aff211fde41c4ea0a7ee615bb56d2, type: 3}
   _aim: {fileID: 1199609302}
 --- !u!1001 &916528651
@@ -585,7 +583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6727f0979c43e5d4a8dec54272b16a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 3, y: 7, z: -2}
   _enemy: {fileID: 2515188704997428163, guid: e183febdd676fe04a8c96627b2946672, type: 3}
   _aim: {fileID: 1065855239}
 --- !u!1 &963194225
@@ -756,7 +753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6727f0979c43e5d4a8dec54272b16a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 3, y: -2, z: 1}
   _enemy: {fileID: 2515188704997428163, guid: bd18af0a23ef7e94d9b4d2bb32bd78fd, type: 3}
   _aim: {fileID: 2037358006}
 --- !u!1 &1351747358
@@ -950,10 +946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe6243dfc2b98e44b2483111d7b8f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 2515188704997428163, guid: 40ed7afd204916145b66285603bd577b, type: 3}
   _spawnInterval: 2
-  _poolCapacity: 5
-  _poolMaxSize: 5
+  _poolCapacity: 10
+  _poolMaxSize: 10
   _spawnersList:
   - {fileID: 754006373}
   - {fileID: 943417363}
